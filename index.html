@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Murmur · 随想</title>
+  <meta name="description" content="Murmur / 随想：只属于你的私密日记。写下生活与情绪，AI 朋友会认真回应。没有社交，没有广场。">
+  <meta name="theme-color" content="#101014">
+  <link rel="canonical" href="https://xcat-hub.github.io/murmur_web/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Murmur · 随想">
+  <meta property="og:description" content="一个只属于你自己的私密日记。多位 AI 朋友真诚地回应你。">
+  <meta property="og:url" content="https://xcat-hub.github.io/murmur_web/">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var k = "murmur-lang", l;
+      try { l = localStorage.getItem(k); } catch (e) {}
+      if (l !== "zh" && l !== "en") {
+        l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en";
+      }
+      document.documentElement.lang = l;
+      document.documentElement.setAttribute("data-lang", l);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Murmur</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" aria-current="page"><span class="zh">介绍</span><span class="en">About</span></a>
+      <a href="privacy.html"><span class="zh">隐私政策</span><span class="en">Privacy</span></a>
+      <a href="terms.html"><span class="zh">服务条款</span><span class="en">Terms</span></a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang-btn="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Murmur · 随想</p>
+      <h1 class="zh">只属于你的日记，<br>有朋友回应。</h1>
+      <h1 class="en">A journal that is only yours,<br>with friends who reply.</h1>
+      <p class="lede zh">写下生活与情绪。Luna、Atlas、Milo 会用不同的方式接住你。没有其他真人，没有关注，没有广场——像一本只给你看的朋友圈。</p>
+      <p class="lede en">Write what happened, and how it felt. Luna, Atlas, and Milo meet you in different ways. No other people, no followers, no public square — like a feed that exists only for you.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="privacy.html"><span class="zh">阅读隐私政策</span><span class="en">Read the privacy policy</span></a>
+        <a class="btn btn-ghost" href="terms.html"><span class="zh">阅读服务条款</span><span class="en">Read the terms</span></a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <article class="card">
+        <h2 class="zh">隐私优先</h2>
+        <h2 class="en">Private first</h2>
+        <p class="zh">日记默认只存在你的设备上，本地数据库加密。没有广告，不出售数据，不用你的内容训练通用模型。</p>
+        <p class="en">Your journal stays on your device by default, in an encrypted local database. No ads, no selling data, and we do not use your writing to train a general model.</p>
+      </article>
+      <article class="card">
+        <h2 class="zh">你决定谁看见</h2>
+        <h2 class="en">You choose who sees it</h2>
+        <p class="zh">每条记录都可以选择哪些 AI 朋友可见。没被选中的朋友既不会回应，也不会把这条写进记忆。</p>
+        <p class="en">Each entry can be visible only to the AI friends you choose. The others will not reply, and will not remember that entry.</p>
+      </article>
+      <article class="card">
+        <h2 class="zh">不是社交产品</h2>
+        <h2 class="en">Not a social network</h2>
+        <p class="zh">没有其他用户，没有公开分享。随想解决的是「想被理解，但不想被围观」。</p>
+        <p class="en">There are no other users and no public sharing. Murmur is for being understood without being watched.</p>
+      </article>
+      <article class="card">
+        <h2 class="zh">不是心理治疗</h2>
+        <h2 class="en">Not therapy</h2>
+        <p class="zh">AI 朋友提供陪伴和视角，不做诊断，不替代专业帮助。若你正处于危机中，请向真人与专业热线求助。</p>
+        <p class="en">AI friends offer company and perspective. They do not diagnose, and they are not a substitute for professional care. If you are in crisis, please reach a person you trust or a local helpline.</p>
+      </article>
+    </div>
+
+    <p class="section-title zh">三位朋友</p>
+    <p class="section-title en">Three friends</p>
+    <p class="section-lead zh">回应很短，像朋友的一句评论，而不是长篇分析。你也可以只写日记、不请任何人看。</p>
+    <p class="section-lead en">Replies are short, like a friend’s comment — not a long analysis. You can also keep a private diary and invite no one.</p>
+
+    <div class="friends">
+      <article class="friend">
+        <div class="blob blob-luna" aria-hidden="true"></div>
+        <h3>Luna</h3>
+        <p class="role zh">安慰者</p>
+        <p class="role en">The Comforter</p>
+        <p class="zh">温暖、善良，永远先接住你的情绪。不说教，不急着给建议。</p>
+        <p class="en">Warm and kind. She meets the feeling first — no lectures, no rush to advice.</p>
+      </article>
+      <article class="friend">
+        <div class="blob blob-atlas" aria-hidden="true"></div>
+        <h3>Atlas</h3>
+        <p class="role zh">观察者</p>
+        <p class="role en">The Observer</p>
+        <p class="zh">看见你反复提起的事，帮你看到更大的图景。不施压，不揣测动机。</p>
+        <p class="en">He notices what returns, and the larger picture. No pressure, no guessing at motives.</p>
+      </article>
+      <article class="friend">
+        <div class="blob blob-milo" aria-hidden="true"></div>
+        <h3>Milo</h3>
+        <p class="role zh">乐观者</p>
+        <p class="role en">The Optimist</p>
+        <p class="zh">在合适的时候点出一点亮处。你低落时，他不会硬撑「想开点」。</p>
+        <p class="en">He finds a light touch when it fits. When you are low, he will not tell you to cheer up.</p>
+      </article>
+    </div>
+
+    <aside class="note">
+      <p class="zh"><strong>关于 AI 回应。</strong> 日记本身保存在本机。只有当你请朋友回应时，相关文字才会经我们的服务器临时发送给 AI 服务以生成短评。代理不保存原文。图片留在设备上，不会上传。登录 Google 或 Apple 只是为了给 AI 代理一个稳定身份，日记不会随这个账号同步。</p>
+      <p class="en"><strong>About AI replies.</strong> The journal itself stays on your device. Only when you invite a friend to reply is the relevant text sent, through our server, to an AI service to generate a short comment. The proxy does not keep the original text. Photos stay on the device and are not uploaded. Signing in with Google or Apple only gives the AI proxy a stable identity; your journal does not sync with that account.</p>
+    </aside>
+
+    <p class="coming zh">应用即将登陆 App Store 与 Google Play。包名：<code>dd.journal.murmur</code></p>
+    <p class="coming en">The app will be available on the App Store and Google Play. Package name: <code>dd.journal.murmur</code></p>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Legal">
+      <a href="privacy.html"><span class="zh">隐私政策</span><span class="en">Privacy Policy</span></a>
+      <a href="terms.html"><span class="zh">服务条款</span><span class="en">Terms of Service</span></a>
+    </nav>
+    <p class="zh">© 2026 Murmur · 随想。日记只属于你。</p>
+    <p class="en">© 2026 Murmur. Your journal belongs only to you.</p>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>

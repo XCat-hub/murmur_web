@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xcat-hub.github.io/murmur_web/sitemap.xml

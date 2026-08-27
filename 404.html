@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not found — Murmur</title>
+  <meta name="theme-color" content="#101014">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var k = "murmur-lang", l;
+      try { l = localStorage.getItem(k); } catch (e) {}
+      if (l !== "zh" && l !== "en") {
+        l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en";
+      }
+      document.documentElement.lang = l;
+      document.documentElement.setAttribute("data-lang", l);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Murmur</span>
+    </a>
+  </header>
+  <main class="wrap legal">
+    <h1 class="zh">没有这一页。</h1>
+    <h1 class="en">This page is not here.</h1>
+    <p class="zh"><a href="index.html">回到首页</a> · <a href="privacy.html">隐私政策</a> · <a href="terms.html">服务条款</a></p>
+    <p class="en"><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  </main>
+  <script src="js/site.js"></script>
+</body>
+</html>
