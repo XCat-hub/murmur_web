@@ -1,5 +1,22 @@
 # 修改历史
 
+## 2026-10-10 对齐当前 App，供 App Store 审核打开
+
+**需求**：官网是这个 App 的隐私政策和使用条款。页面还停在 Luna / Atlas / Milo、OpenRouter DeepSeek、系统整机备份，以及「以后如果有订阅」。审核对照链接时会对不上现在的 App。
+
+**方案**：
+
+- 朋友改为 Wren、Sage、Pip、Rowan，并写明是 AI、不是医疗建议。
+- 回应改为经 Cloud Functions 发给 Google Gemini；打标签发给 OpenRouter。照片仍不上传。
+- iOS 备份改为用户自己 iCloud 里的 CloudKit 私有库，可在设置里删除。
+- 写上呢喃+ / Murmur+ 自动续期年订阅：价格以 App Store 为准，试用结束前至少 24 小时可取消，可恢复购买。日记、导出、锁、备份和危机关怀不收费。
+- 删除账号会去掉服务端账号以及用量、订阅记录；本机日记和 iCloud 备份不跟着删。
+- 去掉系统通知的说法。生效日期改为 2026-10-10。
+
+**涉及文件**：`index.html`、`privacy.html`、`terms.html`、`css/style.css`、`history.md`。
+
+---
+
 ## 2026-08-27 中文名改为随想，改为发布到 GitHub Pages
 
 **需求**：中文名统一为「随想」；联系邮箱保持 `xuetingcat@gmail.com`；不发布到 Firebase，改为发布到 GitHub。

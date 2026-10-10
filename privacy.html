@@ -42,8 +42,8 @@
   <main id="main" class="wrap legal">
     <h1 class="zh">隐私政策</h1>
     <h1 class="en">Privacy Policy</h1>
-    <p class="meta zh">生效日期：2026 年 8 月 27 日 · 适用于 Murmur / 随想移动应用及本网站</p>
-    <p class="meta en">Effective: 27 August 2026 · Applies to the Murmur mobile app and this website</p>
+    <p class="meta zh">生效日期：2026 年 10 月 10 日 · 适用于 Murmur / 随想移动应用及本网站</p>
+    <p class="meta en">Effective: 10 October 2026 · Applies to the Murmur mobile app and this website</p>
 
     <nav class="toc zh" aria-label="目录">
       目录：
@@ -82,13 +82,13 @@
     <p class="zh">可能涉及的信息只有以下几类，且都有明确用途：</p>
     <p class="en">The only information that may be involved, and only for the purposes below, is:</p>
     <ul class="zh">
-      <li><strong>你写下的内容</strong>（文字、可选的地点名称、你对 AI 的回复）：默认只存在本机。仅在生成 AI 回应时，相关文字会被临时发送，见第 4 节。</li>
+      <li><strong>你写下的内容</strong>（文字、可选的地点名称、你对 AI 的回复）：默认只存在本机。仅在生成 AI 回应或为日记打标签时，相关文字会被临时发送，见第 4 节。</li>
       <li><strong>你添加的图片</strong>：存在应用私有目录，不会上传到我们的服务器，也不会发给 AI 服务。</li>
       <li><strong>账号标识</strong>：为调用 AI 代理，应用会使用 Firebase Authentication。默认可以是匿名身份；你也可以绑定 Google 或 Apple 账号。该账号不用于同步日记。</li>
       <li><strong>本网站的语言偏好</strong>：仅保存在你浏览器的本地存储中，用于记住中文 / 英文选择。本站不设置追踪 Cookie。</li>
     </ul>
     <ul class="en">
-      <li><strong>What you write</strong> (text, optional place names, replies to an AI): stored on your device by default. Relevant text is sent only when generating an AI reply, as described in section 4.</li>
+      <li><strong>What you write</strong> (text, optional place names, replies to an AI): stored on your device by default. Relevant text is sent only when generating an AI reply or tagging an entry, as described in section 4.</li>
       <li><strong>Photos you attach</strong>: stored in the app’s private directory. They are not uploaded to our servers and are not sent to the AI service.</li>
       <li><strong>Account identifiers</strong>: the app uses Firebase Authentication so it can call the AI proxy. This may be an anonymous identity, or a Google or Apple account you choose to link. That account is not used to sync your journal.</li>
       <li><strong>Language preference on this website</strong>: stored only in your browser’s local storage so we can remember Chinese or English. This site does not set tracking cookies.</li>
@@ -97,8 +97,8 @@
     <h2 id="journal"><span class="zh">3. 日记如何存储</span><span class="en">3. How the journal is stored</span></h2>
     <p class="zh">日记、图片、标签、以及每位 AI 朋友被你授权后记住的要点，都保存在设备本地。本地数据库使用加密存储。每位 AI 的记忆彼此隔离：只有你允许看见某条记录的朋友，才会用该条更新记忆。</p>
     <p class="en">Your journal, photos, tags, and the facts an AI friend is allowed to remember are stored on the device. The local database is encrypted. Each friend’s memory is isolated: only a friend you made visible to an entry may use that entry to update memory.</p>
-    <p class="zh">在 iOS 上，若你在系统设置中打开了 iCloud 备份，且在应用内开启了相关选项，日记所在的应用文档目录可随设备的 iCloud 备份一起保存，便于换机恢复。这是系统备份，不是我们运营的云同步；我们无法在自己的服务器上阅读这些备份。从未经加密的电脑备份恢复时，可能出现「有数据、无密钥」而打不开日记，请使用加密备份。</p>
-    <p class="en">On iOS, if iCloud Backup is on in system settings and the related option is enabled in the app, the app’s documents folder can be included in the device backup so you can restore on a new phone. That is Apple’s device backup, not a cloud sync we operate; we cannot read those backups on our servers. Restoring from an unencrypted computer backup may leave the database without its key. Please use an encrypted backup.</p>
+    <p class="zh">在 iOS 上，你可以在应用内打开 iCloud 备份。备份写入你自己的 iCloud 私有数据库（CloudKit），包含加密后的日记库、用于打开它的密钥字段，以及图片。这不是我们的服务器，我们无法在自己的服务器上阅读这些备份。你可以在设置里删除这份备份。</p>
+    <p class="en">On iOS you can turn on an iCloud backup in the app. It is written to your own private iCloud database (CloudKit) and includes the encrypted journal, the key field needed to open it, and your photos. That database is not our server, and we cannot read those backups on our servers. You can delete the backup in Settings.</p>
     <p class="zh">本期 Android 不提供换机云恢复。你可在设置中将日记导出为 PDF。</p>
     <p class="en">This version does not offer cloud restore on Android. You can export your journal as a PDF from Settings.</p>
 
@@ -107,38 +107,40 @@
     <p class="en">On-device models are not yet good enough for the kind of replies Murmur aims for. So when AI replies are on and you post (or you tap “invite a friend”):</p>
     <ul class="zh">
       <li>应用在本机组装提示词：当前条目的文字、该朋友的人设、以及该朋友被你授权过的记忆摘要。若附有图片，只会注明「附了几张图」，<strong>图片文件本身不会发送</strong>。</li>
-      <li>提示词经加密连接（TLS）发到我们托管在 Google Firebase 上的 Cloud Functions 代理（当前区域：<code>us-central1</code>），再转发至 OpenRouter，由 DeepSeek 模型生成短评。</li>
+      <li>生成回应时，提示词经加密连接（TLS）发到我们托管在 Google Firebase 上的 Cloud Functions 代理（当前区域：<code>us-central1</code>），再发给 Google Gemini 生成短评。</li>
+      <li>为日记打上情绪、主题和事件时，正文也会经同一代理发给 OpenRouter 上的分类模型。照片文件仍然不会发送。</li>
       <li>调用代理需要已登录的 Firebase 身份（可为匿名）。厂商 API 密钥只存在服务器，不会进入你的设备。</li>
-      <li>我们的代理<strong>不把提示词或日记原文写入数据库，也不把请求原文写入日志</strong>。生成用后即焚。OpenRouter 及其上游模型提供方可能按各自政策短暂处理请求，以完成推理。</li>
+      <li>我们的代理<strong>不把提示词或日记原文写入数据库，也不把请求原文写入日志</strong>。生成用后即焚。Google 与 OpenRouter 可能按各自政策短暂处理请求，以完成推理。</li>
       <li>未获你授权可见的 AI 朋友不会读取该条原文，也不会用它更新记忆。</li>
       <li>你可以关闭「AI 回应」，只把 Murmur 当成本地日记；此时不会为生成回应而发送内容。</li>
     </ul>
     <ul class="en">
       <li>The app builds a prompt on the device: the current entry’s text, that friend’s persona, and memory the friend was allowed to keep. If photos are attached, the prompt only notes how many — <strong>the image files are not sent</strong>.</li>
-      <li>The prompt is sent over TLS to our Google Firebase Cloud Functions proxy (currently <code>us-central1</code>), then to OpenRouter, where a DeepSeek model writes a short comment.</li>
+      <li>When generating a reply, the prompt is sent over TLS to our Google Firebase Cloud Functions proxy (currently <code>us-central1</code>), then to Google Gemini, which writes a short comment.</li>
+      <li>When an entry is tagged for mood, topic, and event, the text is also sent through the same proxy to a classification model on OpenRouter. Image files are still not sent.</li>
       <li>Calling the proxy requires a signed-in Firebase identity (which may be anonymous). Vendor API keys stay on the server and never on your device.</li>
-      <li>Our proxy <strong>does not store prompts or journal text in a database, and does not log request bodies</strong>. Generation is ephemeral. OpenRouter and its upstream model provider may process the request briefly under their own policies in order to complete inference.</li>
+      <li>Our proxy <strong>does not store prompts or journal text in a database, and does not log request bodies</strong>. Generation is ephemeral. Google and OpenRouter may process the request briefly under their own policies in order to complete inference.</li>
       <li>An AI friend you did not make visible will not read that entry and will not update memory from it.</li>
       <li>You can turn off AI replies and use Murmur as a local diary only. In that case, nothing is sent to generate a reply.</li>
     </ul>
 
     <h2 id="account"><span class="zh">5. 账号与登录</span><span class="en">5. Accounts and sign-in</span></h2>
-    <p class="zh">登录 Google 或 Sign in with Apple 是可选的。目的是给 AI 代理一个稳定身份，避免匿名会话中断后无法调用回应。日记仍只保存在本机，<strong>不会</strong>随 Google / Apple 账号同步到云端或另一台设备。</p>
-    <p class="en">Signing in with Google or Sign in with Apple is optional. It gives the AI proxy a stable identity so replies do not break when an anonymous session ends. Your journal still lives only on the device. It does <strong>not</strong> sync to the cloud or another device through that Google or Apple account.</p>
-    <p class="zh">在设置中删除账号，会删除服务端的 Firebase 账号记录。本机日记与图片不受影响。你也可以在设备上卸载应用或清空应用数据，以删除本机日记（此操作不可恢复，请先导出）。</p>
-    <p class="en">Deleting the account in Settings removes the Firebase account on the server. The journal and photos on the device are not affected. You can also uninstall the app or clear app data to delete the local journal (this cannot be undone; export first if you need a copy).</p>
+    <p class="zh">登录是可选的。iOS 上使用 Sign in with Apple，Android 上使用 Google 登录。目的是给 AI 代理一个稳定身份。若登录方提供姓名或邮箱，我们只用它在应用里显示你的账号。日记仍只保存在本机，<strong>不会</strong>随该账号同步到另一台设备。</p>
+    <p class="en">Sign-in is optional. iOS uses Sign in with Apple; Android uses Google sign-in. It gives the AI proxy a stable identity. If the provider shares your name or email, we use it only to show your account in the app. Your journal still lives only on the device. It does <strong>not</strong> sync to another device through that account.</p>
+    <p class="zh">在设置中删除账号，会删除 Firebase 账号，以及服务端为该账号保存的用量记录和订阅状态。本机日记与图片不受影响。iCloud 备份需要在设置里单独删除。你也可以卸载应用或清空应用数据以删除本机日记（此操作不可恢复，请先导出）。</p>
+    <p class="en">Deleting the account in Settings removes the Firebase account and the usage and subscription records stored for it. The journal and photos on the device are not affected. An iCloud backup is deleted separately in Settings. You can also uninstall the app or clear app data to delete the local journal (this cannot be undone; export first if you need a copy).</p>
 
     <h2 id="device"><span class="zh">6. 设备权限</span><span class="en">6. Device permissions</span></h2>
     <ul class="zh">
       <li><strong>相册 / 相机</strong>：仅在你写记录并选择添加照片时使用。照片保存在应用内。</li>
-      <li><strong>位置</strong>：仅在你写记录并选择附加地点时，单次读取当前位置，用于得到地点名称。精确坐标留在本机。若该条随后用于生成 AI 回应，地点名称可能作为文字的一部分被临时发送。</li>
-      <li><strong>通知</strong>（若你开启）：用于可选的每日记录提醒，以及应用内的回应提示。通知默认不展示日记正文。</li>
+      <li><strong>位置</strong>：仅在你写记录并选择附加地点时，单次读取当前位置，用于得到地点名称。精确坐标留在本机。若该条随后用于生成 AI 回应或打标签，地点名称可能作为文字的一部分被临时发送。</li>
     </ul>
     <ul class="en">
       <li><strong>Photos / camera</strong>: used only when you choose to attach a photo while writing. Photos stay in the app.</li>
-      <li><strong>Location</strong>: read once, only while you are writing and choose to attach a place, so we can resolve a place name. Precise coordinates stay on the device. If that entry is later sent for an AI reply, the place name may be included as part of the text.</li>
-      <li><strong>Notifications</strong> (if you enable them): optional daily reminders, and in-app notice that a friend has replied. Notifications do not show the journal body by default.</li>
+      <li><strong>Location</strong>: read once, only while you are writing and choose to attach a place, so we can resolve a place name. Precise coordinates stay on the device. If that entry is later sent for an AI reply or for tagging, the place name may be included as part of the text.</li>
     </ul>
+    <p class="zh">应用不申请系统通知权限。朋友回应后的提示只出现在应用内。</p>
+    <p class="en">The app does not ask for system notification permission. A notice that a friend replied stays inside the app.</p>
 
     <h2 id="crisis"><span class="zh">7. 危机识别</span><span class="en">7. Crisis detection</span></h2>
     <p class="zh">若本地规则判断你可能在表达自伤等高危内容，应用会走关怀路径并展示求助资源，而不是把该内容送进生成模型。判定结果不额外上报给我们，也不为此单独建档。</p>
@@ -149,15 +151,19 @@
     <p class="en">To provide AI replies and optional sign-in, we use the processors below. They process data only as needed for their function:</p>
     <ul class="zh">
       <li><strong>Google Firebase</strong>（Authentication、Cloud Functions）：账号身份与 AI 代理。处理可能发生在美国等 Google 运营的区域。</li>
-      <li><strong>Google 登录 / Apple 登录</strong>：仅在你主动选择绑定账号时。</li>
-      <li><strong>OpenRouter</strong> 及其上游 <strong>DeepSeek</strong>：根据提示词生成短评。请同时参阅其隐私政策。</li>
-      <li><strong>Apple iCloud 备份</strong>：仅在你于系统中开启设备备份时，由 Apple 按系统备份处理。</li>
+      <li><strong>Google Gemini</strong>（Google AI Studio）：根据提示词生成短评。</li>
+      <li><strong>OpenRouter</strong>：根据正文做情绪、主题和事件分类。请同时参阅其隐私政策。</li>
+      <li><strong>Sign in with Apple / Google 登录</strong>：仅在你主动选择绑定账号时。iOS 只使用 Apple。</li>
+      <li><strong>RevenueCat</strong> 与 <strong>Apple</strong>：处理呢喃+ / Murmur+ 订阅状态。不接收日记正文。</li>
+      <li><strong>Apple CloudKit</strong>：仅在你于应用内打开 iCloud 备份时，数据留在你自己的 iCloud 私有库。</li>
     </ul>
     <ul class="en">
       <li><strong>Google Firebase</strong> (Authentication, Cloud Functions): account identity and the AI proxy. Processing may occur in the United States or other regions where Google operates.</li>
-      <li><strong>Google Sign-In / Sign in with Apple</strong>: only if you choose to link an account.</li>
-      <li><strong>OpenRouter</strong> and its upstream <strong>DeepSeek</strong> model: generate the short comment from the prompt. Please also read their privacy policies.</li>
-      <li><strong>Apple iCloud Backup</strong>: only if you turn on device backup in system settings, handled by Apple as a system backup.</li>
+      <li><strong>Google Gemini</strong> (Google AI Studio): writes the short comment from the prompt.</li>
+      <li><strong>OpenRouter</strong>: classifies the text by mood, topic, and event. Please also read its privacy policy.</li>
+      <li><strong>Sign in with Apple / Google sign-in</strong>: only if you choose to link an account. iOS uses Apple only.</li>
+      <li><strong>RevenueCat</strong> and <strong>Apple</strong>: handle Murmur+ subscription status. They do not receive journal text.</li>
+      <li><strong>Apple CloudKit</strong>: only if you turn on iCloud backup in the app. The data stays in your own private iCloud database.</li>
     </ul>
 
     <h2 id="not"><span class="zh">9. 我们明确不做的事</span><span class="en">9. What we do not do</span></h2>
@@ -177,8 +183,8 @@
     <h2 id="rights"><span class="zh">10. 你的权利与数据保留</span><span class="en">10. Your rights and retention</span></h2>
     <p class="zh">日记的控制权在你的设备上：你可以编辑、删除单条记录，导出 PDF，或清空 / 卸载以删除本机数据。服务端账号可在设置中删除。Firebase 匿名或绑定账号在你删除前会保留，以便继续调用 AI 代理；删除后即不再保留该账号。</p>
     <p class="en">Control of the journal is on your device: you can edit or delete entries, export a PDF, or clear / uninstall to delete local data. The server-side account can be deleted in Settings. A Firebase anonymous or linked account is kept until you delete it, so the AI proxy can keep working; after deletion it is not retained.</p>
-    <p class="zh">因 AI 代理部署在美国区域，当你请求生成回应时，相关文字会传输到该区域及 OpenRouter 所在的处理地点。若你所在司法辖区对跨境传输有要求，请在继续使用 AI 回应前自行评估；你也可以关闭 AI 回应，仅使用本地日记。</p>
-    <p class="en">Because the AI proxy is deployed in a US region, when you request a reply the relevant text is transferred there and to wherever OpenRouter processes it. If your jurisdiction restricts cross-border transfers, please consider that before using AI replies; you can also turn replies off and keep a local journal only.</p>
+    <p class="zh">因 AI 代理部署在美国区域，当你请求生成回应或打标签时，相关文字会传输到该区域，以及 Google、OpenRouter 所在的处理地点。若你所在司法辖区对跨境传输有要求，请在继续使用这些功能前自行评估；你也可以关闭 AI 回应，仅使用本地日记。</p>
+    <p class="en">Because the AI proxy is deployed in a US region, when you request a reply or tagging the relevant text is transferred there and to wherever Google or OpenRouter processes it. If your jurisdiction restricts cross-border transfers, please consider that before using those features; you can also turn replies off and keep a local journal only.</p>
 
     <h2><span class="zh">11. 儿童</span><span class="en">11. Children</span></h2>
     <p class="zh">Murmur 面向 18 岁及以上的成年人。我们不会故意收集 13 岁以下儿童的个人信息。若你认为我们误处理了儿童数据，请写信给我们，我们会删除可识别的服务端账号信息。</p>
