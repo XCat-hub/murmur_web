@@ -1,5 +1,15 @@
 # 修改历史
 
+## 2026-10-12 首页 AI 头像改用 App 角色图
+
+**需求**：官网「四位 AI 朋友」的头像与 App 中 Wren、Sage、Pip、Rowan 使用的图标不一致，网站仍是纯色不规则色块。
+
+**方案**：把 App `assets/personas/{wren,sage,pip,rowan}.png` 原样复制到网站 `assets/personas/`。首页色块改为圆形裁切的 `<img>`，与 App `AiAvatar` 的圆形 `BoxFit.cover` 一致。名字仍由标题提供，图片 `alt` 留空。
+
+**涉及文件**：`index.html`、`css/style.css`、`assets/personas/wren.png`、`assets/personas/sage.png`、`assets/personas/pip.png`、`assets/personas/rowan.png`、`history.md`。
+
+---
+
 ## 2026-10-10 对齐当前 App，供 App Store 审核打开
 
 **需求**：官网是这个 App 的隐私政策和使用条款。页面还停在 Luna / Atlas / Milo、OpenRouter DeepSeek、系统整机备份，以及「以后如果有订阅」。审核对照链接时会对不上现在的 App。

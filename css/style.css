@@ -279,30 +279,12 @@ main {
   background: var(--bg-card);
 }
 
-.blob {
-  width: 56px;
-  height: 56px;
+.avatar {
+  width: 72px;
+  height: 72px;
   margin-bottom: 16px;
-}
-
-.blob-wren {
-  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-  background: linear-gradient(145deg, #b4a8c6, #7b6b9e);
-}
-
-.blob-sage {
-  border-radius: 42% 58% 37% 63% / 48% 42% 58% 52%;
-  background: linear-gradient(145deg, #8eaa98, #4e6b62);
-}
-
-.blob-pip {
-  border-radius: 58% 42% 63% 37% / 42% 58% 42% 58%;
-  background: linear-gradient(145deg, #e0c27a, #b08a5f);
-}
-
-.blob-rowan {
-  border-radius: 48% 52% 40% 60% / 58% 42% 58% 42%;
-  background: linear-gradient(145deg, #d4896a, #a85a45);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .friend h3 {
