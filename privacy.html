@@ -42,8 +42,8 @@
   <main id="main" class="wrap legal">
     <h1 class="zh">隐私政策</h1>
     <h1 class="en">Privacy Policy</h1>
-    <p class="meta zh">生效日期：2026 年 10 月 10 日 · 适用于 Murmur / 随想移动应用及本网站</p>
-    <p class="meta en">Effective: 10 October 2026 · Applies to the Murmur mobile app and this website</p>
+    <p class="meta zh">生效日期：2026 年 10 月 19 日 · 适用于 Murmur / 随想移动应用及本网站</p>
+    <p class="meta en">Effective: 19 October 2026 · Applies to the Murmur mobile app and this website</p>
 
     <nav class="toc zh" aria-label="目录">
       目录：
@@ -86,12 +86,14 @@
       <li><strong>你添加的图片</strong>：存在应用私有目录，不会上传到我们的服务器，也不会发给 AI 服务。</li>
       <li><strong>账号标识</strong>：为调用 AI 代理，应用会使用 Firebase Authentication。默认可以是匿名身份；你也可以绑定 Google 或 Apple 账号。该账号不用于同步日记。</li>
       <li><strong>本网站的语言偏好</strong>：仅保存在你浏览器的本地存储中，用于记住中文 / 英文选择。本站不设置追踪 Cookie。</li>
+      <li><strong>地图瓦片请求</strong>：在应用里打开地图时，设备会直接向 OpenStreetMap France 的瓦片服务器请求图片，主机名为 <code>a.tile.openstreetmap.fr</code>。请求不经过我们的服务器。见第 6 节和第 8 节。</li>
     </ul>
     <ul class="en">
       <li><strong>What you write</strong> (text, optional place names, replies to an AI): stored on your device by default. Relevant text is sent only when generating an AI reply or tagging an entry, as described in section 4.</li>
       <li><strong>Photos you attach</strong>: stored in the app’s private directory. They are not uploaded to our servers and are not sent to the AI service.</li>
       <li><strong>Account identifiers</strong>: the app uses Firebase Authentication so it can call the AI proxy. This may be an anonymous identity, or a Google or Apple account you choose to link. That account is not used to sync your journal.</li>
       <li><strong>Language preference on this website</strong>: stored only in your browser’s local storage so we can remember Chinese or English. This site does not set tracking cookies.</li>
+      <li><strong>Map tile requests</strong>: when you open a map in the app, the device requests images directly from the OpenStreetMap France tile server at <code>a.tile.openstreetmap.fr</code>. Those requests do not pass through our servers. See sections 6 and 8.</li>
     </ul>
 
     <h2 id="journal"><span class="zh">3. 日记如何存储</span><span class="en">3. How the journal is stored</span></h2>
@@ -110,7 +112,7 @@
       <li>生成回应时，提示词经加密连接（TLS）发到我们托管在 Google Firebase 上的 Cloud Functions 代理（当前区域：<code>us-central1</code>），再发给 Google Gemini 生成短评。</li>
       <li>为日记打上情绪、主题和事件时，正文也会经同一代理发给 OpenRouter 上的分类模型。照片文件仍然不会发送。</li>
       <li>调用代理需要已登录的 Firebase 身份（可为匿名）。厂商 API 密钥只存在服务器，不会进入你的设备。</li>
-      <li>我们的代理<strong>不把提示词或日记原文写入数据库，也不把请求原文写入日志</strong>。生成用后即焚。Google 与 OpenRouter 可能按各自政策短暂处理请求，以完成推理。</li>
+      <li>我们的代理<strong>不把提示词或日记原文写入数据库，也不把请求原文写入日志</strong>。这只说明我们自己的代理不留原文。Google 与 OpenRouter 是否保留或另作他用，见本节后面的说明，不能概括成「用后即焚」。</li>
       <li>未获你授权可见的 AI 朋友不会读取该条原文，也不会用它更新记忆。</li>
       <li>你可以关闭「AI 回应」，只把 Murmur 当成本地日记；此时不会为生成回应而发送内容。</li>
     </ul>
@@ -119,10 +121,18 @@
       <li>When generating a reply, the prompt is sent over TLS to our Google Firebase Cloud Functions proxy (currently <code>us-central1</code>), then to Google Gemini, which writes a short comment.</li>
       <li>When an entry is tagged for mood, topic, and event, the text is also sent through the same proxy to a classification model on OpenRouter. Image files are still not sent.</li>
       <li>Calling the proxy requires a signed-in Firebase identity (which may be anonymous). Vendor API keys stay on the server and never on your device.</li>
-      <li>Our proxy <strong>does not store prompts or journal text in a database, and does not log request bodies</strong>. Generation is ephemeral. Google and OpenRouter may process the request briefly under their own policies in order to complete inference.</li>
+      <li>Our proxy <strong>does not store prompts or journal text in a database, and does not log request bodies</strong>. That describes only our proxy. Whether Google or OpenRouter keeps the text, or uses it for anything else, is explained below. It is not accurate to call the whole path ephemeral.</li>
       <li>An AI friend you did not make visible will not read that entry and will not update memory from it.</li>
       <li>You can turn off AI replies and use Murmur as a local diary only. In that case, nothing is sent to generate a reply.</li>
     </ul>
+    <p class="zh"><strong>Gemini API 与改进模型。</strong> 短评发给的是 Google Gemini API，密钥只在服务器上。Google 会不会用这段文字改进产品，取决于这次调用是不是它定义的已付费服务。按 <a href="https://ai.google.dev/gemini-api/terms">Gemini API 附加条款</a>（2026 年 3 月 23 日生效，页面于 2026 年 4 月 28 日更新；本页于 2026 年 10 月 19 日核对），只有通过<strong>已关联有效结算账号的 Google Cloud 项目</strong>调用该 API，才算已付费服务。在这个前提下，Google 声明不会把提示词（含系统指令、缓存内容和文件）或回复用于改进其产品，并按「Google 作为处理者」的数据处理附录处理这些内容。即便如此，Google 仍可能在有限时间内记录提示词和回复，只为发现和阻止违反其禁止使用政策，以及法律要求的披露。所以已付费服务也不是零保留。</p>
+    <p class="zh">未付费服务（包括未付费额度）不适用上面的限制。Google 可以把你提交的内容和生成结果用于提供、改进和开发其产品与机器学习技术，人工审核员也可能阅读、标注输入和输出。同一条款写明：位于欧洲经济区、瑞士或英国时，未付费额度也适用已付费服务的数据使用规则。另外，若把 Gemini API 的日志数据集分享给 Google，被分享的内容会按未付费条款处理，并可能用于训练模型（见 <a href="https://ai.google.dev/gemini-api/docs/logs-policy">数据日志与分享</a>）。这把密钥应当按照已开通结算的项目来使用，并且不把日记相关的日志数据集分享给 Google。结算一旦关闭，或数据集被分享，未付费条款就可能适用。本页不把 Google Cloud 或 Google AI Studio 控制台里的开关写成已经核对过的结论。不想把文字发给 Google 时，请关闭 AI 回应。</p>
+    <p class="zh"><strong>OpenRouter 与保留、训练。</strong> 分类请求发给 OpenRouter。其<a href="https://openrouter.ai/privacy">隐私政策</a>（最后更新 2026 年 8 月 31 日；本页于 2026 年 10 月 19 日核对）写明：OpenRouter 不用输入或输出来训练模型；同时，包含个人数据的输入也会被 OpenRouter 收集，所以请求并不是绕过 OpenRouter。<a href="https://openrouter.ai/docs/guides/privacy/data-collection">数据收集说明</a>写明：默认不按账号保存提示词和回复正文；只有打开「私人输入与输出日志」，或打开「允许 OpenRouter 使用输入/输出改进产品」（这两项默认关闭），才会保存正文或拿去改进产品。OpenRouter 会保存不含正文的请求元数据，例如 token 数量和延迟。未打开上述产品改进选项时，它仍可能抽取少量提示词做匿名主题分类；该分类不与账号关联，并由零数据保留的模型完成。</p>
+    <p class="zh">上游模型提供方是另一层。OpenRouter 文档中的默认 <code>data_collection</code> 为 <code>allow</code>，请求可以被送到会非临时保存用户数据、甚至可能用于训练的提供方。把 <code>data_collection</code> 设为 <code>deny</code>，才会只路由到声明不收集用户数据的提供方。按<a href="https://openrouter.ai/docs/guides/features/zdr">零数据保留</a>说明设置 <code>zdr: true</code>，才会只路由到声明零保留的端点。这两种限制都要在 OpenRouter 账号或该次请求里单独打开。本页不把它们写成已经核对过的调用方式，因此不能保证分类正文不会被提供方保留或用于训练。可以确定的是：我们的代理不保存原文；OpenRouter 声明自己不拿输入输出训练模型，且默认不按账号保存正文。提供方一侧以该次实际路由到的条款为准。</p>
+    <p class="en"><strong>Gemini API and product improvement.</strong> The short comment is produced by the Google Gemini API. The API key stays on the server. Whether Google may use that text to improve its products depends on whether the call is a Paid Service, as Google defines it. Under the <a href="https://ai.google.dev/gemini-api/terms">Gemini API Additional Terms of Service</a> (effective 23 March 2026, page updated 28 April 2026; checked for this page on 19 October 2026), the Gemini API is a Paid Service only when it is called <strong>through a Google Cloud project with an active billing account</strong>. On that condition, Google says it does not use prompts (including system instructions, cached content, and files) or responses to improve its products, and it processes them under the Data Processing Addendum where Google is a processor. Google may still log prompts and responses for a limited time, solely to detect violations of its Prohibited Use Policy and for legally required disclosures. A paid call is therefore not zero-retention.</p>
+    <p class="en">Unpaid Services, including unpaid quota, do not have that limit. Google may use what you submit and what it generates to provide, improve, and develop its products and machine-learning technologies, and human reviewers may read and annotate inputs and outputs. The same terms say that in the European Economic Area, Switzerland, or the United Kingdom, unpaid quota follows the Paid Services data-use rules. Separately, if Gemini API log datasets are shared with Google, that shared content is handled under the unpaid terms and may be used to train models (see <a href="https://ai.google.dev/gemini-api/docs/logs-policy">Data logging and sharing</a>). The key is meant to be used on a project with billing enabled, and journal-related log datasets are not meant to be shared with Google. If billing is turned off, or a dataset is shared, the unpaid terms can apply. This page does not treat the switches in the Google Cloud or Google AI Studio console as something already verified here. Turn AI replies off if you do not want the text sent to Google.</p>
+    <p class="en"><strong>OpenRouter, retention, and training.</strong> Classification requests go to OpenRouter. Its <a href="https://openrouter.ai/privacy">privacy policy</a> (last updated 31 August 2026; checked for this page on 19 October 2026) says OpenRouter does not use Inputs or Outputs for model training. The same policy also says Inputs that contain personal data are collected by OpenRouter, so the request does not skip OpenRouter. Its <a href="https://openrouter.ai/docs/guides/privacy/data-collection">data-collection guide</a> says it does not store prompt or response text against the account unless the account turns on private input and output logging, or turns on OpenRouter’s use of inputs and outputs to improve the product. Both are off by default. OpenRouter does store request metadata that does not include the text, such as token counts and latency. If product-improvement use is off, it may still sample a small number of prompts for anonymous categorization. That categorization is not tied to the account, and the guide says a zero-data-retention model does it.</p>
+    <p class="en">The model provider behind OpenRouter is a separate step. OpenRouter’s documented default for <code>data_collection</code> is <code>allow</code>, so a request may be routed to a provider that stores user data beyond the request and may train on it. Setting <code>data_collection</code> to <code>deny</code> limits routing to providers that say they do not collect user data. Setting <code>zdr: true</code>, as described in the <a href="https://openrouter.ai/docs/guides/features/zdr">zero data retention</a> guide, limits routing to endpoints that say they do not retain data. Each of those limits has to be turned on in the OpenRouter account or on that request. This page does not treat either one as a call pattern already checked, so it cannot promise that a provider will not retain classification text or use it for training. What we can say is: our proxy does not keep the original text; OpenRouter says it does not train on inputs and outputs, and that it does not store the text against the account by default. On the provider side, the terms of whoever actually receives the request apply.</p>
 
     <h2 id="account"><span class="zh">5. 账号与登录</span><span class="en">5. Accounts and sign-in</span></h2>
     <p class="zh">登录是可选的。iOS 上使用 Sign in with Apple，Android 上使用 Google 登录。目的是给 AI 代理一个稳定身份。若登录方提供姓名或邮箱，我们只用它在应用里显示你的账号。日记仍只保存在本机，<strong>不会</strong>随该账号同步到另一台设备。</p>
@@ -134,10 +144,12 @@
     <ul class="zh">
       <li><strong>相册 / 相机</strong>：仅在你写记录并选择添加照片时使用。照片保存在应用内。</li>
       <li><strong>位置</strong>：仅在你写记录并选择附加地点时，单次读取当前位置，用于得到地点名称。精确坐标留在本机。若该条随后用于生成 AI 回应或打标签，地点名称可能作为文字的一部分被临时发送。</li>
+      <li><strong>地图</strong>：打开地图时，应用从你的设备向主机名为 <code>a.tile.openstreetmap.fr</code> 的服务器请求地图瓦片。这是 OpenStreetMap France 的瓦片服务，请求不经过我们的服务器，日记正文也不会放进这些请求。对方可以看到 IP 地址、被请求的瓦片坐标（能反映你正在查看的大致区域）、请求时间，以及 User-Agent 等 HTTP 信息。使用条件见 <a href="https://www.openstreetmap.fr/usage/">OpenStreetMap France 的说明</a>，地图数据的版权说明见 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>。该使用条件没有写明瓦片请求日志会保留多久。</li>
     </ul>
     <ul class="en">
       <li><strong>Photos / camera</strong>: used only when you choose to attach a photo while writing. Photos stay in the app.</li>
       <li><strong>Location</strong>: read once, only while you are writing and choose to attach a place, so we can resolve a place name. Precise coordinates stay on the device. If that entry is later sent for an AI reply or for tagging, the place name may be included as part of the text.</li>
+      <li><strong>Map</strong>: when a map is open, the app requests map tiles from your device to the server <code>a.tile.openstreetmap.fr</code>. That is OpenStreetMap France’s tile service. The requests do not pass through our servers, and journal text is not included. That server can see your IP address, the tile coordinates requested (which can show the general area you are viewing), the time of the request, and HTTP details such as the User-Agent. The usage conditions are on <a href="https://www.openstreetmap.fr/usage/">OpenStreetMap France’s page</a>, and the data copyright is at <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>. Those usage conditions do not say how long tile-request logs are kept.</li>
     </ul>
     <p class="zh">应用不申请系统通知权限。朋友回应后的提示只出现在应用内。</p>
     <p class="en">The app does not ask for system notification permission. A notice that a friend replied stays inside the app.</p>
@@ -147,20 +159,22 @@
     <p class="en">If on-device rules suggest you may be expressing self-harm or similar crisis content, the app follows a care path and shows help resources instead of sending that content to the generative model. The determination is not reported to us and is not stored as a separate record.</p>
 
     <h2 id="third"><span class="zh">8. 第三方服务</span><span class="en">8. Third parties</span></h2>
-    <p class="zh">为提供 AI 回应和可选登录，我们使用以下处理者。他们只在完成其功能所需的范围内处理数据：</p>
-    <p class="en">To provide AI replies and optional sign-in, we use the processors below. They process data only as needed for their function:</p>
+    <p class="zh">为提供 AI 回应、可选登录、订阅、备份和地图，应用会联系下面这些服务。各自处理哪些数据，以本节和第 4 节为准，不另作更宽的承诺：</p>
+    <p class="en">To provide AI replies, optional sign-in, subscriptions, backup, and the map, the app contacts the services below. What each one processes is described in this section and in section 4:</p>
     <ul class="zh">
       <li><strong>Google Firebase</strong>（Authentication、Cloud Functions）：账号身份与 AI 代理。处理可能发生在美国等 Google 运营的区域。</li>
-      <li><strong>Google Gemini</strong>（Google AI Studio）：根据提示词生成短评。</li>
-      <li><strong>OpenRouter</strong>：根据正文做情绪、主题和事件分类。请同时参阅其隐私政策。</li>
+      <li><strong>Google Gemini API</strong>：根据提示词生成短评。是否属于已付费服务、以及会不会被用于改进或训练，见第 4 节。条款：<a href="https://ai.google.dev/gemini-api/terms">Gemini API 附加条款</a>。</li>
+      <li><strong>OpenRouter</strong>：根据正文做情绪、主题和事件分类。OpenRouter 自身与上游提供方的保留和训练规则不同，见第 4 节。<a href="https://openrouter.ai/privacy">隐私政策</a>。</li>
+      <li><strong>OpenStreetMap France</strong>（<code>a.tile.openstreetmap.fr</code>）：在你查看地图时提供瓦片。请求由设备直接发出，可能带上 IP 地址和所查看区域的瓦片坐标。<a href="https://www.openstreetmap.fr/usage/">使用条件</a>。</li>
       <li><strong>Sign in with Apple / Google 登录</strong>：仅在你主动选择绑定账号时。iOS 只使用 Apple。</li>
       <li><strong>RevenueCat</strong> 与 <strong>Apple</strong>：处理随想+ / Murmur+ 订阅状态。不接收日记正文。</li>
       <li><strong>Apple CloudKit</strong>：仅在你于应用内打开 iCloud 备份时，数据留在你自己的 iCloud 私有库。</li>
     </ul>
     <ul class="en">
       <li><strong>Google Firebase</strong> (Authentication, Cloud Functions): account identity and the AI proxy. Processing may occur in the United States or other regions where Google operates.</li>
-      <li><strong>Google Gemini</strong> (Google AI Studio): writes the short comment from the prompt.</li>
-      <li><strong>OpenRouter</strong>: classifies the text by mood, topic, and event. Please also read its privacy policy.</li>
+      <li><strong>Google Gemini API</strong>: writes the short comment from the prompt. Whether the call is a Paid Service, and whether the text may be used for improvement or training, is in section 4. Terms: <a href="https://ai.google.dev/gemini-api/terms">Gemini API Additional Terms</a>.</li>
+      <li><strong>OpenRouter</strong>: classifies the text by mood, topic, and event. OpenRouter’s own rules and the upstream provider’s retention and training rules are not the same; see section 4. <a href="https://openrouter.ai/privacy">Privacy policy</a>.</li>
+      <li><strong>OpenStreetMap France</strong> (<code>a.tile.openstreetmap.fr</code>): serves map tiles when you view a map. The device calls it directly. The request can include your IP address and the tile coordinates of the area you are viewing. <a href="https://www.openstreetmap.fr/usage/">Usage conditions</a>.</li>
       <li><strong>Sign in with Apple / Google sign-in</strong>: only if you choose to link an account. iOS uses Apple only.</li>
       <li><strong>RevenueCat</strong> and <strong>Apple</strong>: handle Murmur+ subscription status. They do not receive journal text.</li>
       <li><strong>Apple CloudKit</strong>: only if you turn on iCloud backup in the app. The data stays in your own private iCloud database.</li>
@@ -169,13 +183,13 @@
     <h2 id="not"><span class="zh">9. 我们明确不做的事</span><span class="en">9. What we do not do</span></h2>
     <ul class="zh">
       <li>不出售你的个人数据或日记内容。</li>
-      <li>不用你的日记训练通用 / 公开的人工智能模型。</li>
+      <li>不用你的日记训练我们自己的模型。发给 Google 或 OpenRouter 的文字是否被他们用于改进或训练，见第 4 节。这里不作无条件承诺。</li>
       <li>不做广告画像，不向你展示第三方广告。</li>
       <li>不把日记做成社交产品，不向其他用户分发你的内容。</li>
     </ul>
     <ul class="en">
       <li>We do not sell your personal data or journal content.</li>
-      <li>We do not use your journal to train a general or public AI model.</li>
+      <li>We do not use your journal to train a model of our own. Whether Google or OpenRouter uses text sent to them for improvement or training is covered in section 4. This is not an unconditional promise.</li>
       <li>We do not build advertising profiles or show you third-party ads.</li>
       <li>We do not turn the journal into a social product, and we do not distribute your content to other users.</li>
     </ul>
@@ -183,8 +197,8 @@
     <h2 id="rights"><span class="zh">10. 你的权利与数据保留</span><span class="en">10. Your rights and retention</span></h2>
     <p class="zh">日记的控制权在你的设备上：你可以编辑、删除单条记录，导出 PDF，或清空 / 卸载以删除本机数据。服务端账号可在设置中删除。Firebase 匿名或绑定账号在你删除前会保留，以便继续调用 AI 代理；删除后即不再保留该账号。</p>
     <p class="en">Control of the journal is on your device: you can edit or delete entries, export a PDF, or clear / uninstall to delete local data. The server-side account can be deleted in Settings. A Firebase anonymous or linked account is kept until you delete it, so the AI proxy can keep working; after deletion it is not retained.</p>
-    <p class="zh">因 AI 代理部署在美国区域，当你请求生成回应或打标签时，相关文字会传输到该区域，以及 Google、OpenRouter 所在的处理地点。若你所在司法辖区对跨境传输有要求，请在继续使用这些功能前自行评估；你也可以关闭 AI 回应，仅使用本地日记。</p>
-    <p class="en">Because the AI proxy is deployed in a US region, when you request a reply or tagging the relevant text is transferred there and to wherever Google or OpenRouter processes it. If your jurisdiction restricts cross-border transfers, please consider that before using those features; you can also turn replies off and keep a local journal only.</p>
+    <p class="zh">因 AI 代理部署在美国区域，当你请求生成回应或打标签时，相关文字会传输到该区域，以及 Google、OpenRouter 所在的处理地点。打开地图时，瓦片请求会从设备发到 OpenStreetMap France（<code>a.tile.openstreetmap.fr</code>），不经过我们的服务器。若你所在司法辖区对跨境传输有要求，请在继续使用这些功能前自行评估；你也可以关闭 AI 回应，仅使用本地日记，并避免打开地图。</p>
+    <p class="en">Because the AI proxy is deployed in a US region, when you request a reply or tagging the relevant text is transferred there and to wherever Google or OpenRouter processes it. When you open a map, tile requests go from the device to OpenStreetMap France (<code>a.tile.openstreetmap.fr</code>) and do not pass through our servers. If your jurisdiction restricts cross-border transfers, please consider that before using those features. You can also turn replies off and keep a local journal only, and you can avoid opening the map.</p>
 
     <h2><span class="zh">11. 儿童</span><span class="en">11. Children</span></h2>
     <p class="zh">Murmur 面向 18 岁及以上的成年人。我们不会故意收集 13 岁以下儿童的个人信息。若你认为我们误处理了儿童数据，请写信给我们，我们会删除可识别的服务端账号信息。</p>
