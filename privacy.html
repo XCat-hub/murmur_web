@@ -1,24 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh" data-lang="zh">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy · 隐私政策 — Murmur</title>
-  <meta name="description" content="Murmur / 随想隐私政策：日记如何存储、AI 回应如何处理内容、以及我们明确不做的事。">
+  <title>Privacy Policy — Murmur</title>
+  <meta name="description" content="How Murmur stores your journal, how AI replies handle what you write, and what we do not do.">
   <meta name="theme-color" content="#101014">
   <link rel="canonical" href="https://xcat-hub.github.io/murmur_web/privacy.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    (function () {
-      var k = "murmur-lang", l;
-      try { l = localStorage.getItem(k); } catch (e) {}
-      if (l !== "zh" && l !== "en") {
-        l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en";
-      }
-      document.documentElement.lang = l;
-      document.documentElement.setAttribute("data-lang", l);
-    })();
+    document.documentElement.lang = "en";
+    document.documentElement.setAttribute("data-lang", "en");
   </script>
 </head>
 <body>
@@ -85,14 +78,14 @@
       <li><strong>你写下的内容</strong>（文字、可选的地点名称、你对 AI 的回复）：默认只存在本机。仅在生成 AI 回应或为日记打标签时，相关文字会被临时发送，见第 4 节。</li>
       <li><strong>你添加的图片</strong>：存在应用私有目录，不会上传到我们的服务器，也不会发给 AI 服务。</li>
       <li><strong>账号标识</strong>：为调用 AI 代理，应用会使用 Firebase Authentication。默认可以是匿名身份；你也可以绑定 Google 或 Apple 账号。该账号不用于同步日记。</li>
-      <li><strong>本网站的语言偏好</strong>：仅保存在你浏览器的本地存储中，用于记住中文 / 英文选择。本站不设置追踪 Cookie。</li>
+      <li><strong>本网站</strong>：目前只显示英文。不在浏览器里保存语言偏好，也不设置追踪 Cookie。</li>
       <li><strong>地图瓦片请求</strong>：在应用里打开地图时，设备会直接向 OpenStreetMap France 的瓦片服务器请求图片，主机名为 <code>a.tile.openstreetmap.fr</code>。请求不经过我们的服务器。见第 6 节和第 8 节。</li>
     </ul>
     <ul class="en">
       <li><strong>What you write</strong> (text, optional place names, replies to an AI): stored on your device by default. Relevant text is sent only when generating an AI reply or tagging an entry, as described in section 4.</li>
       <li><strong>Photos you attach</strong>: stored in the app’s private directory. They are not uploaded to our servers and are not sent to the AI service.</li>
       <li><strong>Account identifiers</strong>: the app uses Firebase Authentication so it can call the AI proxy. This may be an anonymous identity, or a Google or Apple account you choose to link. That account is not used to sync your journal.</li>
-      <li><strong>Language preference on this website</strong>: stored only in your browser’s local storage so we can remember Chinese or English. This site does not set tracking cookies.</li>
+      <li><strong>This website</strong>: shown in English. It does not store a language preference and does not set tracking cookies.</li>
       <li><strong>Map tile requests</strong>: when you open a map in the app, the device requests images directly from the OpenStreetMap France tile server at <code>a.tile.openstreetmap.fr</code>. Those requests do not pass through our servers. See sections 6 and 8.</li>
     </ul>
 

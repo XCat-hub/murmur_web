@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh" data-lang="zh">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Murmur · 随想</title>
-  <meta name="description" content="Murmur / 随想：只属于你的私密日记。写下生活与情绪，AI 朋友会认真回应。没有社交，没有广场。">
+  <title>Murmur</title>
+  <meta name="description" content="A private journal that is only yours. Write what happened, and how it felt. AI friends reply. There is no social feed.">
   <meta name="theme-color" content="#101014">
   <link rel="canonical" href="https://xcat-hub.github.io/murmur_web/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="Murmur · 随想">
-  <meta property="og:description" content="一个只属于你自己的私密日记。多位 AI 朋友真诚地回应你。">
+  <meta property="og:title" content="Murmur">
+  <meta property="og:description" content="A private journal that is only yours, with AI friends who reply. No social feed.">
   <meta property="og:url" content="https://xcat-hub.github.io/murmur_web/">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    (function () {
-      var k = "murmur-lang", l;
-      try { l = localStorage.getItem(k); } catch (e) {}
-      if (l !== "zh" && l !== "en") {
-        l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en";
-      }
-      document.documentElement.lang = l;
-      document.documentElement.setAttribute("data-lang", l);
-    })();
+    document.documentElement.lang = "en";
+    document.documentElement.setAttribute("data-lang", "en");
   </script>
 </head>
 <body>
@@ -45,7 +38,7 @@
 
   <main id="main" class="wrap">
     <section class="hero">
-      <p class="eyebrow">Murmur · 随想</p>
+      <p class="eyebrow">Murmur</p>
       <h1 class="zh">只属于你的日记，<br>有朋友回应。</h1>
       <h1 class="en">A journal that is only yours,<br>with friends who reply.</h1>
       <p class="lede zh">写下生活与情绪。Wren、Sage、Pip、Rowan 是四位 AI 朋友，会用不同的方式接住你。他们不是真人，也不是医疗建议。没有其他用户，没有关注，没有广场。</p>

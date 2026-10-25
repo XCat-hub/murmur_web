@@ -27,9 +27,10 @@ html {
   scroll-behavior: smooth;
 }
 
-html[data-lang="zh"] .en,
-html[data-lang="en"] .zh {
-  display: none;
+/* Chinese copy stays in the markup. This submission shows English only. */
+.zh,
+.lang-toggle {
+  display: none !important;
 }
 
 body {
@@ -425,13 +426,9 @@ main {
   .site-header,
   .site-footer,
   .skip,
-  .lang-toggle {
+  .lang-toggle,
+  .zh {
     display: none !important;
-  }
-
-  html[data-lang="zh"] .en,
-  html[data-lang="en"] .zh {
-    display: block !important;
   }
 
   body {
