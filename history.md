@@ -1,5 +1,33 @@
 # 修改历史
 
+## 2026-10-28 官网图标与 App 同步
+
+**需求**：网站 favicon、页眉 logo 与链接预览图应与当前 App 图标一致（Wren 头像版），不再使用旧紫色 SVG 占位。
+
+**方案**：
+
+- 从 `aifriend` 复制 `web/favicon.png`、`web/icons/Icon-192.png`、`Icon-512.png` 及 `assets/brand/app_icon.png` 到 `assets/`（四位 AI 头像 MD5 已与 App 一致，未改）。
+- 全站 `<link rel="icon">`、`apple-touch-icon` 指向 PNG；首页增加 `og:image` 用 512 图。
+- 页眉 `brand-mark` 改为 `<img>` 显示 192 图标；CSS 圆角与 `object-fit: cover` 对齐 App 观感。
+- 删除 `assets/favicon.svg`。
+
+**涉及文件**：`assets/favicon.png`、`assets/app-icon-192.png`、`assets/app-icon-512.png`、`assets/app-icon.png`、`index.html`、`privacy.html`、`terms.html`、`404.html`、`css/style.css`；删除 `assets/favicon.svg`；`history.md`。
+
+---
+
+## 2026-10-28 中文应用名统一为「随想」
+
+**需求**：中文应用名定为「随想」（英文仍为 Murmur），不再使用旧名「呢喃」；官网与文档与 App 文案一致。
+
+**方案**：
+
+- `aifriend`：`app_zh.arb`、导出 PDF 文件名、`Murmur.storekit` 订阅展示名，以及仍写「呢喃 / 呢喃+」的 MD 规格文档，统一为「随想 / 随想+」。
+- `murmur_web`：`index.html`、`privacy.html`、`terms.html` 中文里的应用名与页脚版权行改为「随想 / 随想+」。
+
+**涉及文件**：见各仓库 `history.md` 当次记录；`aifriend/history.md` 同步追加本条。
+
+---
+
 ## 2026-10-25 官网上架前只保留英文
 
 **需求**：再查一遍会挡住 App Store 的地方。官网先只给审核看英文，中文先隐藏，不删。这一轮专注上架。
@@ -50,7 +78,7 @@
 - 朋友改为 Wren、Sage、Pip、Rowan，并写明是 AI、不是医疗建议。
 - 回应改为经 Cloud Functions 发给 Google Gemini；打标签发给 OpenRouter。照片仍不上传。
 - iOS 备份改为用户自己 iCloud 里的 CloudKit 私有库，可在设置里删除。
-- 写上呢喃+ / Murmur+ 自动续期年订阅：价格以 App Store 为准，试用结束前至少 24 小时可取消，可恢复购买。日记、导出、锁、备份和危机关怀不收费。
+- 写上随想+ / Murmur+ 自动续期年订阅：价格以 App Store 为准，试用结束前至少 24 小时可取消，可恢复购买。日记、导出、锁、备份和危机关怀不收费。
 - 删除账号会去掉服务端账号以及用量、订阅记录；本机日记和 iCloud 备份不跟着删。
 - 去掉系统通知的说法。生效日期改为 2026-10-10。
 
@@ -72,9 +100,9 @@
 
 ---
 
-## 2026-08-27 为 Murmur（呢喃）建立产品官网（隐私政策、服务条款、介绍）
+## 2026-08-27 为 Murmur（随想）建立产品官网（隐私政策、服务条款、介绍）
 
-**需求**：在 `murmur_web` 目录下做关于 `aifriend`（应用名 Murmur / 呢喃）的网站，主要内容为隐私政策、服务条款，以及介绍性信息。
+**需求**：在 `murmur_web` 目录下做关于 `aifriend`（应用名 Murmur / 随想）的网站，主要内容为隐私政策、服务条款，以及介绍性信息。
 
 **方案**：
 

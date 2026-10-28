@@ -116,8 +116,9 @@ main {
 .brand-mark {
   width: 28px;
   height: 28px;
-  border-radius: 42% 58% 48% 52% / 52% 42% 58% 48%;
-  background: linear-gradient(145deg, #8a7aad, #5d5278);
+  border-radius: 7px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .brand-name {
