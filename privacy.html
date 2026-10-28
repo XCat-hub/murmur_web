@@ -67,8 +67,8 @@
     </nav>
 
     <h2 id="who"><span class="zh">1. 我们是谁</span><span class="en">1. Who we are</span></h2>
-    <p class="zh">本政策由 Murmur（中文名：随想）的开发者提供。Murmur 是一款私密日记与 AI 陪伴应用。联系邮箱：<a href="mailto:xuetingcat@gmail.com">xuetingcat@gmail.com</a>。Android 包名为 <code>dd.journal.murmur</code>。</p>
-    <p class="en">This policy is provided by the developer of Murmur. Murmur is a private journal with AI companions. Contact: <a href="mailto:xuetingcat@gmail.com">xuetingcat@gmail.com</a>. The Android package name is <code>dd.journal.murmur</code>.</p>
+    <p class="zh">本政策由 Murmur（中文名：随想）的开发者提供。Murmur 是一款私密日记与 AI 陪伴应用。联系邮箱：<a href="mailto:xuetingcat@gmail.com">xuetingcat@gmail.com</a>。</p>
+    <p class="en">This policy is provided by the developer of Murmur. Murmur is a private journal with AI companions. Contact: <a href="mailto:xuetingcat@gmail.com">xuetingcat@gmail.com</a>.</p>
 
     <h2 id="collect"><span class="zh">2. 我们收集什么</span><span class="en">2. What we collect</span></h2>
     <p class="zh">Murmur 以「本地优先」为原则。应用<strong>不会</strong>把你的日记库上传到我们的服务器做存储或同步。我们也不使用广告 SDK、分析 SDK 或崩溃上报来追踪你。</p>
@@ -78,14 +78,14 @@
     <ul class="zh">
       <li><strong>你写下的内容</strong>（文字、可选的地点名称、你对 AI 的回复）：默认只存在本机。仅在生成 AI 回应或为日记打标签时，相关文字会被临时发送，见第 4 节。</li>
       <li><strong>你添加的图片</strong>：存在应用私有目录，不会上传到我们的服务器，也不会发给 AI 服务。</li>
-      <li><strong>账号标识</strong>：为调用 AI 代理，应用会使用 Firebase Authentication。默认可以是匿名身份；你也可以绑定 Google 或 Apple 账号。该账号不用于同步日记。</li>
+      <li><strong>账号标识</strong>：为调用 AI 代理，应用会使用 Firebase Authentication。默认可以是匿名身份；你也可以绑定 Apple 账号。该账号不用于同步日记。</li>
       <li><strong>本网站</strong>：目前只显示英文。不在浏览器里保存语言偏好，也不设置追踪 Cookie。</li>
       <li><strong>地图瓦片请求</strong>：在应用里打开地图时，设备会直接向 OpenStreetMap France 的瓦片服务器请求图片，主机名为 <code>a.tile.openstreetmap.fr</code>。请求不经过我们的服务器。见第 6 节和第 8 节。</li>
     </ul>
     <ul class="en">
       <li><strong>What you write</strong> (text, optional place names, replies to an AI): stored on your device by default. Relevant text is sent only when generating an AI reply or tagging an entry, as described in section 4.</li>
       <li><strong>Photos you attach</strong>: stored in the app’s private directory. They are not uploaded to our servers and are not sent to the AI service.</li>
-      <li><strong>Account identifiers</strong>: the app uses Firebase Authentication so it can call the AI proxy. This may be an anonymous identity, or a Google or Apple account you choose to link. That account is not used to sync your journal.</li>
+      <li><strong>Account identifiers</strong>: the app uses Firebase Authentication so it can call the AI proxy. This may be an anonymous identity, or an Apple account you choose to link. That account is not used to sync your journal.</li>
       <li><strong>This website</strong>: shown in English. It does not store a language preference and does not set tracking cookies.</li>
       <li><strong>Map tile requests</strong>: when you open a map in the app, the device requests images directly from the OpenStreetMap France tile server at <code>a.tile.openstreetmap.fr</code>. Those requests do not pass through our servers. See sections 6 and 8.</li>
     </ul>
@@ -95,8 +95,8 @@
     <p class="en">Your journal, photos, tags, and the facts an AI friend is allowed to remember are stored on the device. The local database is encrypted. Each friend’s memory is isolated: only a friend you made visible to an entry may use that entry to update memory.</p>
     <p class="zh">在 iOS 上，你可以在应用内打开 iCloud 备份。备份写入你自己的 iCloud 私有数据库（CloudKit），包含加密后的日记库、用于打开它的密钥字段，以及图片。这不是我们的服务器，我们无法在自己的服务器上阅读这些备份。你可以在设置里删除这份备份。</p>
     <p class="en">On iOS you can turn on an iCloud backup in the app. It is written to your own private iCloud database (CloudKit) and includes the encrypted journal, the key field needed to open it, and your photos. That database is not our server, and we cannot read those backups on our servers. You can delete the backup in Settings.</p>
-    <p class="zh">本期 Android 不提供换机云恢复。你可在设置中将日记导出为 PDF。</p>
-    <p class="en">This version does not offer cloud restore on Android. You can export your journal as a PDF from Settings.</p>
+    <p class="zh">你可在设置中将日记导出为 PDF。</p>
+    <p class="en">You can export your journal as a PDF from Settings.</p>
 
     <h2 id="ai"><span class="zh">4. 生成 AI 回应时，内容如何被处理</span><span class="en">4. How content is handled when generating an AI reply</span></h2>
     <p class="zh">纯端侧模型目前还不足以提供稳定、有分寸的回应。因此，当你开启 AI 回应并发布（或手动「请朋友看看」）时：</p>
@@ -129,10 +129,10 @@
     <p class="en">The model provider behind OpenRouter is a separate step. OpenRouter’s documented default for <code>data_collection</code> is <code>allow</code>, so a request may be routed to a provider that stores user data beyond the request and may train on it. Setting <code>data_collection</code> to <code>deny</code> limits routing to providers that say they do not collect user data. Setting <code>zdr: true</code>, as described in the <a href="https://openrouter.ai/docs/guides/features/zdr">zero data retention</a> guide, limits routing to endpoints that say they do not retain data. Each of those limits has to be turned on in the OpenRouter account or on that request. This page does not treat either one as a call pattern already checked, so it cannot promise that a provider will not retain classification text or use it for training. What we can say is: our proxy does not keep the original text; OpenRouter says it does not train on inputs and outputs, and that it does not store the text against the account by default. On the provider side, the terms of whoever actually receives the request apply.</p>
 
     <h2 id="account"><span class="zh">5. 账号与登录</span><span class="en">5. Accounts and sign-in</span></h2>
-    <p class="zh">登录是可选的。iOS 上使用 Sign in with Apple，Android 上使用 Google 登录。目的是给 AI 代理一个稳定身份。若登录方提供姓名或邮箱，我们只用它在应用里显示你的账号。日记仍只保存在本机，<strong>不会</strong>随该账号同步到另一台设备。</p>
-    <p class="en">Sign-in is optional. iOS uses Sign in with Apple; Android uses Google sign-in. It gives the AI proxy a stable identity. If the provider shares your name or email, we use it only to show your account in the app. Your journal still lives only on the device. It does <strong>not</strong> sync to another device through that account.</p>
-    <p class="zh">在设置中删除账号，会删除 Firebase 账号，以及服务端为该账号保存的用量记录和订阅状态。本机日记与图片不受影响。iCloud 备份需要在设置里单独删除。你也可以卸载应用或清空应用数据以删除本机日记（此操作不可恢复，请先导出）。</p>
-    <p class="en">Deleting the account in Settings removes the Firebase account and the usage and subscription records stored for it. The journal and photos on the device are not affected. An iCloud backup is deleted separately in Settings. You can also uninstall the app or clear app data to delete the local journal (this cannot be undone; export first if you need a copy).</p>
+    <p class="zh">登录是可选的。应用使用 Sign in with Apple，目的是给 AI 代理一个稳定身份。若 Apple 提供姓名或邮箱，我们只用它在应用里显示你的账号。日记仍只保存在本机，<strong>不会</strong>随该账号同步到另一台设备。</p>
+    <p class="en">Sign-in is optional. The app uses Sign in with Apple to give the AI proxy a stable identity. If Apple shares your name or email, we use it only to show your account in the app. Your journal still lives only on the device. It does <strong>not</strong> sync to another device through that account.</p>
+    <p class="zh">在设置中删除账号，会删除 Firebase 账号，以及服务端为该账号保存的用量记录和订阅状态。本机日记与图片不受影响。iCloud 备份需要在设置里单独删除。你也可以卸载应用以删除本机日记（此操作不可恢复，请先导出）。</p>
+    <p class="en">Deleting the account in Settings removes the Firebase account and the usage and subscription records stored for it. The journal and photos on the device are not affected. An iCloud backup is deleted separately in Settings. You can also uninstall the app to delete the local journal (this cannot be undone; export first if you need a copy).</p>
 
     <h2 id="device"><span class="zh">6. 设备权限</span><span class="en">6. Device permissions</span></h2>
     <ul class="zh">
@@ -160,7 +160,7 @@
       <li><strong>Google Gemini API</strong>：根据提示词生成短评。是否属于已付费服务、以及会不会被用于改进或训练，见第 4 节。条款：<a href="https://ai.google.dev/gemini-api/terms">Gemini API 附加条款</a>。</li>
       <li><strong>OpenRouter</strong>：根据正文做情绪、主题和事件分类。OpenRouter 自身与上游提供方的保留和训练规则不同，见第 4 节。<a href="https://openrouter.ai/privacy">隐私政策</a>。</li>
       <li><strong>OpenStreetMap France</strong>（<code>a.tile.openstreetmap.fr</code>）：在你查看地图时提供瓦片。请求由设备直接发出，可能带上 IP 地址和所查看区域的瓦片坐标。<a href="https://www.openstreetmap.fr/usage/">使用条件</a>。</li>
-      <li><strong>Sign in with Apple / Google 登录</strong>：仅在你主动选择绑定账号时。iOS 只使用 Apple。</li>
+      <li><strong>Sign in with Apple</strong>：仅在你主动选择绑定账号时。</li>
       <li><strong>RevenueCat</strong> 与 <strong>Apple</strong>：处理随想+ / Murmur+ 订阅状态。不接收日记正文。</li>
       <li><strong>Apple CloudKit</strong>：仅在你于应用内打开 iCloud 备份时，数据留在你自己的 iCloud 私有库。</li>
     </ul>
@@ -169,7 +169,7 @@
       <li><strong>Google Gemini API</strong>: writes the short comment from the prompt. Whether the call is a Paid Service, and whether the text may be used for improvement or training, is in section 4. Terms: <a href="https://ai.google.dev/gemini-api/terms">Gemini API Additional Terms</a>.</li>
       <li><strong>OpenRouter</strong>: classifies the text by mood, topic, and event. OpenRouter’s own rules and the upstream provider’s retention and training rules are not the same; see section 4. <a href="https://openrouter.ai/privacy">Privacy policy</a>.</li>
       <li><strong>OpenStreetMap France</strong> (<code>a.tile.openstreetmap.fr</code>): serves map tiles when you view a map. The device calls it directly. The request can include your IP address and the tile coordinates of the area you are viewing. <a href="https://www.openstreetmap.fr/usage/">Usage conditions</a>.</li>
-      <li><strong>Sign in with Apple / Google sign-in</strong>: only if you choose to link an account. iOS uses Apple only.</li>
+      <li><strong>Sign in with Apple</strong>: only if you choose to link an account.</li>
       <li><strong>RevenueCat</strong> and <strong>Apple</strong>: handle Murmur+ subscription status. They do not receive journal text.</li>
       <li><strong>Apple CloudKit</strong>: only if you turn on iCloud backup in the app. The data stays in your own private iCloud database.</li>
     </ul>

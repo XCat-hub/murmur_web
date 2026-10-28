@@ -1,5 +1,19 @@
 # 修改历史
 
+## 2026-10-28 去掉 Android 相关表述
+
+**需求**：官网不再出现 Android 信息（含 Google Play、包名 `dd.journal.murmur`、Google 登录与 Android 云恢复等）。
+
+**方案**：
+
+- 首页「即将登陆」只保留 App Store，删除 Google Play 与包名。
+- 隐私政策：删除 Android 包名；账号与第三方列表改为仅 Sign in with Apple；去掉 Android 云恢复段落，保留 PDF 导出说明；删除账号处去掉「清空应用数据」。
+- 服务条款：账号段去掉 Android / Google 绑定，换机恢复表述不再单独强调 iOS。
+
+**涉及文件**：`index.html`、`privacy.html`、`terms.html`、`history.md`。
+
+---
+
 ## 2026-10-28 页脚去掉「日记只属于你」
 
 **需求**：页脚不再显示「日记只属于你 / Your journal belongs only to you」。
