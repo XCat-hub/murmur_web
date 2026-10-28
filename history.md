@@ -1,5 +1,15 @@
 # 修改历史
 
+## 2026-10-28 页脚去掉「日记只属于你」
+
+**需求**：页脚不再显示「日记只属于你 / Your journal belongs only to you」。
+
+**方案**：`index.html`、`privacy.html`、`terms.html` 页脚版权行只保留「© 2026 Murmur · 随想。」与「© 2026 Murmur.」。
+
+**涉及文件**：`index.html`、`privacy.html`、`terms.html`、`history.md`。
+
+---
+
 ## 2026-10-28 口号同步
 
 **需求**：产品口号改为英文 “Your life, heard.”、中文「分享生活片段，听见不同的理解与回应。」官网主标题和链接预览与之一致。
